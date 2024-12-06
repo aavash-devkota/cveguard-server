@@ -1,29 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<x-main-layout>
+    @push('scripts')
+        <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-        CVEGuard
-    </title>
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon" />
+        <!-- ==== WOW JS ==== -->
+        <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+        <script>
+            new WOW().init();
+        </script>
+    @endpush
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}" />
-
-    <!-- ==== WOW JS ==== -->
-    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
-    <script>
-        new WOW().init();
-    </script>
-</head>
-
-<body>
     <!-- ====== Navbar Section Start -->
     <div class="ud-header absolute left-0 top-0 z-40 flex w-full items-center bg-transparent">
         <div class="container">
@@ -545,6 +531,4 @@
             },
         });
     </script>
-</body>
-
-</html>
+</x-main-layout>
