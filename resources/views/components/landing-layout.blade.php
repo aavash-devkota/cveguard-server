@@ -59,14 +59,31 @@
                     </div>
                     <div class="flex items-center justify-end pr-16 lg:pr-0">
                         <div class="hidden sm:flex">
-                            <a href="signin.html"
-                                class="loginBtn px-[22px] py-2 text-base font-medium text-white hover:opacity-70">
-                                Sign In
-                            </a>
-                            <a href="signup.html"
-                                class="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark">
-                                Sign Up
-                            </a>
+                            @auth
+                                <a href="{{ route('homepage') }}" {{-- TODO: Change href route to dashboard --}}
+                                    class="loginBtn px-[11px] py-2 text-base font-medium text-white hover:opacity-70">
+                                    {{ auth()->user()->name }} <a href="{{ route('verification.notice') }}"><span
+                                            class="bg-yellow-dark ml-0 m-2 inline-block rounded border border-transparent py-1 px-2.5 text-xs font-medium text-white">
+                                            Unverified Email
+                                        </span></a>
+                                </a>
+                                <form method="post" action="{{ route('auth.logout') }}">
+                                    @csrf
+                                    <button
+                                        class="loginBtn px-[11px] py-2 text-base font-medium text-white hover:opacity-70">
+                                        Log out
+                                    </button>
+                                </form>
+                            @else
+                                <a href="{{ route('auth.signin') }}"
+                                    class="loginBtn px-[22px] py-2 text-base font-medium text-white hover:opacity-70">
+                                    Sign In
+                                </a>
+                                <a href="{{ route('auth.signup') }}"
+                                    class="signUpBtn rounded-md bg-white bg-opacity-20 px-6 py-2 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark">
+                                    Sign Up
+                                </a>
+                            @endauth
                         </div>
                     </div>
                 </div>
