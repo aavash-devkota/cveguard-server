@@ -17,9 +17,7 @@ class AllowNonLoggedInUsersOnly
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            flash()->warning('You cannot access the page when you are logged-in.'); // TODO: Remove this line
-
-            return redirect(route('homepage')); // TODO: Check to dashboard
+            return redirect(route('dashboard.index'));
         }
 
         return $next($request);

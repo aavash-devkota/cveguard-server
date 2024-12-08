@@ -60,12 +60,14 @@
                     <div class="flex items-center justify-end pr-16 lg:pr-0">
                         <div class="hidden sm:flex">
                             @auth
-                                <a href="{{ route('homepage') }}" {{-- TODO: Change href route to dashboard --}}
+                                <a href="{{ route('dashboard.index') }}"
                                     class="loginBtn px-[11px] py-2 text-base font-medium text-white hover:opacity-70">
-                                    {{ auth()->user()->name }} <a href="{{ route('verification.notice') }}"><span
-                                            class="bg-yellow-dark ml-0 m-2 inline-block rounded border border-transparent py-1 px-2.5 text-xs font-medium text-white">
-                                            Unverified Email
-                                        </span></a>
+                                    {{ auth()->user()->name }} @if (auth()->user()->email_verified_at == null)
+                                        <a href="{{ route('verification.notice') }}"><span
+                                                class="bg-yellow-dark ml-0 m-2 inline-block rounded border border-transparent py-1 px-2.5 text-xs font-medium text-white">
+                                                Unverified Email
+                                            </span></a>
+                                    @endif
                                 </a>
                                 <form method="post" action="{{ route('auth.logout') }}">
                                     @csrf

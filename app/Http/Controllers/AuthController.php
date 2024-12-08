@@ -35,7 +35,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('homepage'));
+        return redirect()->intended(route('dashboard.index'));
     }
 
     public function signup_view()
@@ -61,7 +61,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended('verification.notice');
+        return redirect()->intended(route('verification.notice'));
     }
 
     public function verify_email_view()
@@ -73,7 +73,7 @@ class AuthController extends Controller
     {
         $request->fulfill();
 
-        return redirect(route('homepage'));
+        return redirect(route('dashboard.index'));
     }
 
     public function resend_verify_email(Request $request)
