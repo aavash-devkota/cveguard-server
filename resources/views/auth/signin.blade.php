@@ -1,5 +1,5 @@
 <x-main-layout>
-	<x-slot:title>Sign in</x-slot:title>
+    <x-slot:title>Sign in</x-slot:title>
 
     <!-- ====== Forms Section Start -->
     <section class="bg-[#F4F7FF] flex justify-center items-center min-h-screen">
