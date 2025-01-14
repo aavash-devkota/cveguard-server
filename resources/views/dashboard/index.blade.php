@@ -184,7 +184,7 @@
                                             <span
                                                 class="mr-2 block h-3 w-full max-w-[12px] rounded-full bg-warning-500"></span>
                                             <p class="flex w-full justify-between text-sm text-dark">
-                                                <span>Medium</span>
+                                                <span>Moderate</span>
                                                 <span>45%</span>
                                             </p>
                                         </div>
@@ -256,7 +256,7 @@
 
     @push('body-scripts')
         <!-- ====== ApexCharts JS ========== -->
-        <script src="./assets/js/apexcharts.min.js"></script>
+        <script src="{{ asset('assets/js/apexcharts.min.js') }}"></script>
         <script>
             // ===== chartOne
             const chartOneOptions = {
@@ -399,7 +399,7 @@
                     width: 380,
                 },
                 colors: ["#dc2626", "#f87171", "#eab308", "#fde047"],
-                labels: ["Critical", "High", "Medium", "Low"],
+                labels: ["Critical", "High", "Moderate", "Low"],
                 legend: {
                     show: false,
                     position: "bottom",

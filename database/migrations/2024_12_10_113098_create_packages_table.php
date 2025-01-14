@@ -1,7 +1,6 @@
 <?php
 
-use App\Models\Project;
-use App\Models\ProjectClient;
+use App\Enums\VulnerabilityEcosystem;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('scans', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Project::class)->constrained()->onDelete('cascade');
-            $table->foreignIdFor(ProjectClient::class)->constrained()->onDelete('cascade');
-            $table->timestamps();
+            $table->string('name');
+            $table->enum('ecosystem', array_column(VulnerabilityEcosystem::cases(), 'value'));
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('scans');
+        Schema::dropIfExists('packages');
     }
 };

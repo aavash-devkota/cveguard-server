@@ -5,15 +5,20 @@
     <x-slot:pagename>{{ $name }}</x-slot:pagename>
 
     <div class="p-[30px]">
-        <form method="post" action="{{ route('dashboard.projects.store') }}" class="flex flex-col gap-8">
+        <form method="post" action="{{ route('dashboard.projects.store') }}" class="flex flex-col gap-8"
+            enctype="multipart/form-data">
+            @csrf
             <div class="w-full md:w-1/2 lg:w-1/3">
                 <div>
                     <label for="name" class="mb-[10px] block text-base font-medium text-dark">
                         Project name
                     </label>
                     <input type="text" placeholder="Enter your project name" autofocus name="name" id="name"
-                        required
+                        required value="{{ old('name') }}"
                         class="w-full bg-transparent rounded-md border border-stroke py-[10px] px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2" />
+                    @error('name')
+                        <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3">
@@ -22,35 +27,45 @@
                         Project logo
                     </label>
                     <input type="file" name="logo" id="logo" accept="image/png, image/gif, image/jpeg"
-                        required
+                        required value="{{ old('file') }}"
                         class="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke font-medium text-body-color outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-[#F5F7FD] file:py-3 file:px-5 file:text-body-color file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                    @error('logo')
+                        <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3">
                 <div>
-                    <label for="package-manager" class="mb-[10px] block text-base font-medium text-dark">
-                        Package manager
+                    <label for="ecosystem" class="mb-[10px] block text-base font-medium text-dark">
+                        Ecosystem / Package manager
                     </label>
                     <div class="relative z-20">
-                        <select name="package-manager" id="package-manager" required
+                        <select name="ecosystem" id="ecosystem" required
                             class="relative z-20 w-full appearance-none rounded-lg border border-stroke bg-transparent py-[10px] px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2">
                             <option value="" selected disabled>Select the package used in your project</option>
-                            <option value="npm">NPM (JavaScript/TypeScript)</option>
+                            <option value="npm" @if (old('ecosystem') == 'npm') selected @endif>NPM
+                                (JavaScript/TypeScript)</option>
                         </select>
                         <span
                             class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-body-color">
                         </span>
                     </div>
+                    @error('ecosystem')
+                        <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3">
                 <div>
-                    <label for="desc" class="mb-[10px] block text-base font-medium text-dark">
+                    <label for="description" class="mb-[10px] block text-base font-medium text-dark">
                         Project description
                     </label>
-                    <textarea rows="5" placeholder="Please enter a short description about your project" id="desc" name="desc"
-                        required
-                        class="w-full bg-transparent rounded-md border border-stroke p-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"></textarea>
+                    <textarea rows="5" placeholder="Please enter a short description about your project" id="description"
+                        name="description" required
+                        class="w-full bg-transparent rounded-md border border-stroke p-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"> {{ old('description') }}</textarea>
+                    @error('description')
+                        <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 

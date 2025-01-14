@@ -12,11 +12,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('project_scan_intervals', function (Blueprint $table) {
+        Schema::create('project_clients', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Project::class)->constrained()->onDelete('cascade');
-            $table->integer('interval')->default(1440)->comment('In minutes'); // Default = 1 day
-            $table->timestampTz('last_scanned_at')->nullable();
+            $table->uuid('project_uuid');
+            $table->string('client_id');
+            $table->string('os');
+            $table->string('hostname');
+            $table->timestamps();
+
+            $table->foreign('project_uuid')->references('uuid')->on('projects');
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_scan_intervals');
+        Schema::dropIfExists('project_clients');
     }
 };
