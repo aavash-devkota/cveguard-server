@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectScanController;
 use App\Http\Middleware\AllowNonLoggedInUsersOnly;
 use Illuminate\Support\Facades\Route;
 
@@ -43,4 +44,5 @@ Route::middleware(['auth', 'verified'])->prefix('/dashboard')->name('dashboard.'
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 
     Route::resource('projects', ProjectController::class);
+    Route::resource('projects.scans', ProjectScanController::class)->only('show');
 });

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VulnerabilitiesFoundMail;
 use App\Models\Package;
 use App\Models\Project;
 use App\Models\ProjectClient;
 use Composer\Semver\Comparator;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 
 class ScanController extends Controller
@@ -28,6 +31,8 @@ class ScanController extends Controller
         $newly_added_scan = $project->scans()->create(['project_client_id' => $client->id]);
         $newly_added_scan_id = $newly_added_scan->id;
 
+        $vulnerabilities_count = 0;
+
         // Loop through each dependency
 
         foreach ($request->dependencies as $dependency) {
@@ -44,12 +49,22 @@ class ScanController extends Controller
                 $introduced_version = $vulnerability->introduced_version;
                 $fixed_version = $vulnerability->fixed_version;
                 if (Comparator::greaterThanOrEqualTo($package_version, $introduced_version) && Comparator::lessThan($package_version, $fixed_version)) {
-                    $newly_added_scan->vulnerabilities()->attach($vulnerability->id);
+                    $vulnerabilities_count++;
+                    try {
+                        $newly_added_scan->vulnerabilities()->attach($vulnerability->id);
+                    } catch (QueryException) {
+                        // Duplicate vulnerabilities for a package is possible
+                        // In such cases, we can ignore the exception
+                    }
                 }
             }
         }
 
-        return response()->json(['scan_url' => URL::to("/dashboard/projects/$project_uuid/scans/$newly_added_scan_id")], 201);
+        if ($vulnerabilities_count > 0) {
+            Mail::to($project->user->email)->send(new VulnerabilitiesFoundMail($project, $newly_added_scan));
+        }
+
+        return response()->json(['scan_url' => URL::to(route('dashboard.projects.scans.show', ['project' => $project, 'scan' => $newly_added_scan]))], 201);
     }
 
     private function get_package_name_and_version(string $input): array

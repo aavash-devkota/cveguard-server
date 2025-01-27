@@ -78,7 +78,10 @@ class ProjectController extends Controller
             $latest_scan = $scans->last();
             $packages_version = $latest_scan->packages->pluck('pivot.package_version', 'name');
             $total_packages_count = $packages_version->count();
-            $packages_vulnerable = $latest_scan->vulnerabilities->sortByDesc('severity')->groupBy('package_id')->groupBy('severity')->toArray()[''];
+            $packages_vulnerable = $latest_scan->vulnerabilities->sortByDesc('severity')->groupBy('package_id')->groupBy('severity')->toArray();
+            if (array_key_exists('', $packages_vulnerable)) {
+                $packages_vulnerable = $packages_vulnerable[''];
+            }
             foreach ($packages_vulnerable as $package_vulnerabilities) {
                 $packages_severity_count[$package_vulnerabilities[0]['severity']]++;
             }
@@ -87,29 +90,5 @@ class ProjectController extends Controller
         }
 
         return view('dashboard.projects.show', compact('project', 'is_atleast_one_client_connected', 'has_atleast_one_scan', 'packages_severity_count', 'total_packages_count', 'total_affected_count', 'packages_version', 'packages_vulnerable', 'scans'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
