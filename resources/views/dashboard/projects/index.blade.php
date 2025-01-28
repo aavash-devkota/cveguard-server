@@ -58,11 +58,15 @@
                                     </td>
                                     <td class="min-w-[220px] py-[18px] flex flex-col gap-1 items-start">
                                             <span
-                                                class="inline-block rounded-full bg-green-light-6 py-[3px] px-[10px] text-sm font-medium text-green">
-                                                Safe
+                                                class="rounded-full @if($project->scans->last()->vulnerabilities_count === 0) bg-[#D7F8E4] @else bg-[#dc2626] text-white @endif py-1 px-4 text-sm font-medium text-success">
+                                                @if($project->scans->last()->vulnerabilities_count === 0)
+                                                    Safe
+                                                @else
+                                                    Vulnerable
+                                                @endif
                                             </span>
                                         <p class="text-base text-body-color ">
-                                            Last scanned on: 25 Nov, 2025
+                                            Last scanned on: {{ $project->scans->last()->created_at->setTimezone('Asia/Kathmandu')->format('d M, Y') }}
                                         </p>
                                     </td>
                                     <td class="py-[18px] pr-6 text-right">
