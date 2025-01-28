@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -83,5 +84,20 @@ class DashboardController extends Controller
             'packages_scanned_last_10_days',
             'vulnerabilities_found_last_10_days'
         ));
+    }
+
+    public function notifications()
+    {
+        $notifications = Auth::user()->notifications;
+
+        return view('dashboard.notifications', ['notifications' => $notifications]);
+    }
+
+    public function notification_view(Notification $notification)
+    {
+        $notification->is_read = true;
+        $notification->save();
+
+        return redirect()->to($notification->href);
     }
 }

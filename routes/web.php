@@ -45,4 +45,7 @@ Route::middleware(['auth', 'verified'])->prefix('/dashboard')->name('dashboard.'
 
     Route::resource('projects', ProjectController::class);
     Route::resource('projects.scans', ProjectScanController::class)->only('show');
+
+    Route::get('/notifications', [DashboardController::class, 'notifications'])->name('notifications');
+    Route::get('/notifications/{notification}', [DashboardController::class, 'notification_view'])->name('notifications.view');
 });

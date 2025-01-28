@@ -62,6 +62,11 @@ class ScanController extends Controller
 
         if ($vulnerabilities_count > 0) {
             Mail::to($project->user->email)->send(new VulnerabilitiesFoundMail($project, $newly_added_scan));
+            $project->user->notifications()->create([
+                'title' => 'Vulnerabilities Found',
+                'body' => "Vulnerabilities has been found in the project '$project->name'",
+                'href' => URL::to(route('dashboard.projects.scans.show', ['project' => $project, 'scan' => $newly_added_scan])),
+            ]);
         }
 
         return response()->json(['scan_url' => URL::to(route('dashboard.projects.scans.show', ['project' => $project, 'scan' => $newly_added_scan]))], 201);
