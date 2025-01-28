@@ -24,4 +24,9 @@ class Scan extends Model
     {
         return $this->belongsTo(ProjectClient::class);
     }
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
+    }
 }

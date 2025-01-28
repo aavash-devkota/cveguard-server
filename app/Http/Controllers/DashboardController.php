@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notification;
+use App\Models\Scan;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -99,5 +100,14 @@ class DashboardController extends Controller
         $notification->save();
 
         return redirect()->to($notification->href);
+    }
+
+    public function past_scans()
+    {
+        $scans = Scan::whereHas('project.user', function ($query) {
+            $query->where('id', Auth::id());
+        })->orderBy('created_at', 'DESC')->get();
+
+        return view('dashboard.past-scans', compact('scans'));
     }
 }

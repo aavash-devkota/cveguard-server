@@ -74,7 +74,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"
+                                <a href="{{ route('dashboard.past-scans') }}"
                                    class="flex w-full items-center rounded py-[10px] px-[18px] text-base font-medium text-dark-6 hover:text-white hover:bg-white/10">
                                     <span class="mr-[10px]">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"

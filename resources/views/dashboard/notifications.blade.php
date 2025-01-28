@@ -1,8 +1,8 @@
 <x-dashboard-layout>
     @php($name = 'Notifications')
 
-    <x-slot:title>Notifications</x-slot:title>
-    <x-slot:pagename>Notifications</x-slot:pagename>
+    <x-slot:title>{{ $name }}</x-slot:title>
+    <x-slot:pagename>{{ $name }}</x-slot:pagename>
 
     <div class="p-[30px]">
         @foreach($notifications as $notification)

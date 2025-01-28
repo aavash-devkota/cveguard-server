@@ -48,4 +48,6 @@ Route::middleware(['auth', 'verified'])->prefix('/dashboard')->name('dashboard.'
 
     Route::get('/notifications', [DashboardController::class, 'notifications'])->name('notifications');
     Route::get('/notifications/{notification}', [DashboardController::class, 'notification_view'])->name('notifications.view');
+
+    Route::get('/past-scans', [DashboardController::class, 'past_scans'])->name('past-scans');
 });
