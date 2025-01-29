@@ -101,7 +101,7 @@
                             </li>
 
                             <li>
-                                <a href="javascript:void(0)"
+                                <a href="{{ route('dashboard.edit-profile') }}"
                                    class="flex w-full items-center rounded py-[10px] px-[18px] text-base font-medium text-dark-6 hover:text-white hover:bg-white/10">
                                     <span class="mr-[10px]">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -214,7 +214,7 @@
 
                                 <div
                                     class="invisible absolute z-50 right-0 top-[120%] mt-3 w-[200px] space-y-2 rounded bg-white p-3 opacity-0 shadow-card-2 duration-200 group-hover:visible group-hover:top-full group-hover:opacity-100">
-                                    <a href="javascript:void(0)"
+                                    <a href="{{ route('dashboard.edit-profile') }}"
                                        class="block px-4 py-2 text-sm font-medium rounded text-body-color hover:bg-gray-2 hover:text-primary">
                                         Edit Profile
                                     </a>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EsewaPaymentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectScanController;
 use App\Http\Middleware\AllowNonLoggedInUsersOnly;
@@ -51,6 +52,9 @@ Route::middleware(['auth', 'verified'])->prefix('/dashboard')->name('dashboard.'
     Route::get('/notifications/{notification}', [DashboardController::class, 'notification_view'])->name('notifications.view');
 
     Route::get('/past-scans', [DashboardController::class, 'past_scans'])->name('past-scans');
+
+    Route::get('/edit-profile', [ProfileController::class, 'edit'])->name('edit-profile');
+    Route::post('/edit-profile', [ProfileController::class, 'update'])->name('edit-profile-update');
 });
 
 // Esewa Payment
