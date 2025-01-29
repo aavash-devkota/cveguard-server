@@ -7,12 +7,12 @@
                     <div class="hero-content wow fadeInUp mx-auto max-w-[780px] text-center" data-wow-delay=".2s">
                         <h1
                             class="mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]">
-                            Open-Source Web Template for SaaS, Startup, Apps, and More
+                            Protect Your Software from Vulnerabilities
                         </h1>
                         <p
                             class="mx-auto mb-9 max-w-[600px] text-base font-medium text-white sm:text-lg sm:leading-[1.44]">
-                            Multidisciplinary Web Template Built with Your Favourite
-                            Technology - HTML Bootstrap, Tailwind and React NextJS.
+                            Don't let security risks compromise your projects. CVEGuard empowers developers and
+                            organizations to detect, prioritize, and fix vulnerabilities effortlessly.
                         </p>
                         <ul class="mb-10 flex flex-wrap items-center justify-center gap-5">
                             <li>
@@ -668,7 +668,7 @@
                     <div
                         class="relative z-10 mb-10 overflow-hidden rounded-xl bg-white px-8 py-10 shadow-pricing sm:p-12 lg:px-6 lg:py-10 xl:p-14">
                         <span class="mb-5 block text-xl font-medium text-dark">
-                            Starter
+                            Free
                         </span>
                         <h2 class="mb-11 text-4xl font-semibold text-dark xl:text-[42px] xl:leading-[1.21]">
                             <span class="text-xl font-medium">Rs</span>
@@ -696,7 +696,7 @@
                     <div
                         class="relative z-10 mb-10 overflow-hidden rounded-xl bg-white px-8 py-10 shadow-pricing sm:p-12 lg:px-6 lg:py-10 xl:p-14">
                         <span class="mb-5 block text-xl font-medium text-dark">
-                            Basic
+                           Personal
                         </span>
                         <h2 class="mb-11 text-4xl font-semibold text-dark xl:text-[42px] xl:leading-[1.21]">
                             <span class="text-xl font-medium">Rs</span>
@@ -711,10 +711,7 @@
                                     Up to 10 Projects
                                 </p>
                                 <p class="text-base text-body-color">
-                                    Lifetime access
-                                </p>
-                                <p class="text-base text-body-color">
-                                    Free updates
+                                    Help and Support within 1 day
                                 </p>
                             </div>
                         </div>
@@ -728,7 +725,7 @@
                     <div
                         class="relative z-10 mb-10 overflow-hidden rounded-xl bg-white px-8 py-10 shadow-pricing sm:p-12 lg:px-6 lg:py-10 xl:p-14">
                         <span class="mb-5 block text-xl font-medium text-dark">
-                            Premium
+                            Pro
                         </span>
                         <h2 class="mb-11 text-4xl font-semibold text-dark xl:text-[42px] xl:leading-[1.21]">
                             <span class="text-xl font-medium">Rs</span>
@@ -743,10 +740,7 @@
                                     Unlimited Projects
                                 </p>
                                 <p class="text-base text-body-color">
-                                    Lifetime access
-                                </p>
-                                <p class="text-base text-body-color">
-                                    Free updates
+                                    Help and Support within 1 hour
                                 </p>
                             </div>
                         </div>
