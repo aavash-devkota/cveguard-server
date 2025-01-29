@@ -32,7 +32,9 @@
 
                     <div class="justify-between mb-5 sm:flex">
                         <h3 class="text-2xl font-semibold text-dark md:leading-[40px] md:text-[28px]">
-                            Projects Added: {{ $user_projects->count() }}/10
+                            Projects Added: {{ $user_projects->count() }} /@switch(auth()->user()->subscription_type)
+                                @case('free') 1 @break @case('personal') 10 @break @case('pro') ∞ @break
+                            @endswitch
                         </h3>
                     </div>
 
@@ -66,7 +68,8 @@
                                                 @endif
                                             </span>
                                         <p class="text-base text-body-color ">
-                                            Last scanned on: {{ $project->scans->last()->created_at->setTimezone('Asia/Kathmandu')->format('d M, Y') }}
+                                            Last scanned
+                                            on: {{ $project->scans->last()->created_at->setTimezone('Asia/Kathmandu')->format('d M, Y') }}
                                         </p>
                                     </td>
                                     <td class="py-[18px] pr-6 text-right">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EsewaPaymentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectScanController;
 use App\Http\Middleware\AllowNonLoggedInUsersOnly;
@@ -50,4 +51,12 @@ Route::middleware(['auth', 'verified'])->prefix('/dashboard')->name('dashboard.'
     Route::get('/notifications/{notification}', [DashboardController::class, 'notification_view'])->name('notifications.view');
 
     Route::get('/past-scans', [DashboardController::class, 'past_scans'])->name('past-scans');
+});
+
+// Esewa Payment
+// -------------
+
+Route::middleware(['auth', 'verified'])->prefix('/esewa')->name('esewa.')->group(function () {
+    Route::get('/initialize', [EsewaPaymentController::class, 'initialize'])->name('initialize');
+    Route::get('/verify', [EsewaPaymentController::class, 'verify'])->name('verify');
 });

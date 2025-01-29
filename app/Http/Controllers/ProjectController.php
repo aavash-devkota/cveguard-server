@@ -26,7 +26,26 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('dashboard.projects.create');
+        $user = Auth::user();
+
+        $can_create_project = false;
+        switch ($user->subscription_type) {
+            case 'free':
+                if ($user->projects->count() < 1) {
+                    $can_create_project = true;
+                }
+                break;
+            case 'personal':
+                if ($user->projects->count() < 10) {
+                    $can_create_project = true;
+                }
+                break;
+            case 'pro':
+                $can_create_project = true;
+                break;
+        }
+
+        return view('dashboard.projects.create', compact('can_create_project'));
     }
 
     /**

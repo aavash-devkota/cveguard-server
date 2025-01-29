@@ -715,7 +715,7 @@
                                 </p>
                             </div>
                         </div>
-                        <a href="javascript:void(0)"
+                        <a href="{{ route('esewa.initialize', ['plan' => 'personal']) }}"
                            class="inline-block rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition hover:bg-blue-dark">
                             Purchase Now
                         </a>
@@ -744,7 +744,7 @@
                                 </p>
                             </div>
                         </div>
-                        <a href="javascript:void(0)"
+                        <a href="{{ route('esewa.initialize', ['plan' => 'pro']) }}"
                            class="inline-block rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition hover:bg-blue-dark">
                             Purchase Now
                         </a>

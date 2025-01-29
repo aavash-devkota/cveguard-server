@@ -198,7 +198,7 @@
                                     <p class="mr-4 text-sm font-medium text-right text-dark">
                                         {{ auth()->user()->name }}
                                         <span class="block text-xs font-normal text-body-color">
-                                            Free Plan
+                                            {{ Str::title(auth()->user()->subscription_type) }} Plan
                                         </span>
                                     </p>
 
