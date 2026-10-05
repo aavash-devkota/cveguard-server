@@ -1,4 +1,6 @@
 # CVEGuard Server
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Laravel](https://img.shields.io/badge/Laravel-PHP-red)](https://laravel.com)
 
 Laravel web server for **CVEGuard** — the vulnerability intelligence platform.
 Serves the UI and API backed by the vulnerability data populated by
