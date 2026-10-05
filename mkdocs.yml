@@ -1,0 +1,8 @@
+site_name: CVEGuard
+theme:
+  name: material
+  palette:
+    scheme: slate
+nav:
+  - Home: index.md
+  - Project Report: project-report.md
